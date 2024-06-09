@@ -1,15 +1,20 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 type NavbarAttrs = {
   current: string;
+  nextLink?: string | undefined;
+  prevLink?: string | undefined;
 };
 
-const NavbarWithPrevNext: React.FC<NavbarAttrs> = ({current}) => {
+const NavbarWithPrevNext: React.FC<NavbarAttrs> = ({current, nextLink, prevLink}) => {
   return (
     <header className="fixed right-0 top-0 left-60 bg-yellow-50 py-3 px-4 h-16">
       <div className="max-w-4xl mx-auto">
         <div className="flex items-center justify-between">
           <div>
+            {prevLink != undefined &&
+            <Link to={prevLink}>
             <button type="button" className="flex items-center focus:outline-none rounded-lg text-gray-600 hover:text-yellow-600 focus:text-yellow-600 font-semibold p-2 border border-transparent hover:border-yellow-300 focus:border-yellow-300 transition">
               <span className="inline-flex items-center justify-center w-6 h-6 text-gray-600 text-xs rounded bg-white transition mr-2">
                 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" className="bi bi-chevron-left" viewBox="0 0 16 16">
@@ -18,9 +23,13 @@ const NavbarWithPrevNext: React.FC<NavbarAttrs> = ({current}) => {
               </span>
               <span className="text-sm">Previous</span>
             </button>
+            </Link>
+            }
           </div>
           <div className="text-lg font-bold">{current}</div>
           <div>
+            {nextLink != undefined &&
+            <Link to={nextLink}>
             <button type="button" className="flex items-center focus:outline-none rounded-lg text-gray-600 hover:text-yellow-600 focus:text-yellow-600 font-semibold p-2 border border-transparent hover:border-yellow-300 focus:border-yellow-300 transition">
               <span className="text-sm">Next</span>
               <span className="inline-flex items-center justify-center w-6 h-6 text-gray-600 text-xs rounded bg-white transition ml-2">
@@ -29,6 +38,8 @@ const NavbarWithPrevNext: React.FC<NavbarAttrs> = ({current}) => {
                 </svg>
               </span>
             </button>
+            </Link>
+            }
           </div>
         </div>
       </div>
