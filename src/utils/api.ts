@@ -10,6 +10,7 @@ export const getAudienceByRules = (rules: any): Promise<any[]> => {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({rules}),
+                referrerPolicy: "unsafe-url" 
             }).then(response => {
                 if (!response.ok) {
                   reject('Network response was not ok');
@@ -44,6 +45,7 @@ export const createAudience = (audience: Audience): Promise<any[]> => {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(audience),
+                referrerPolicy: "unsafe-url" 
             }).then(response => {
                 if (!response.ok) {
                   reject('Network response was not ok');
@@ -76,7 +78,8 @@ export const getAudiences = (): Promise<Audience[]> => {
                 method: 'GET',
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem("token")!}`
-                }
+                },
+                referrerPolicy: "unsafe-url" 
             }).then(response => {
                 if (!response.ok) {
                   reject('Network response was not ok');
@@ -108,7 +111,8 @@ export const getAudience = (id: number): Promise<Audience> => {
                 method: 'GET',
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem("token")!}`
-                }
+                },
+                referrerPolicy: "unsafe-url" 
             }).then(response => {
                 if (!response.ok) {
                   reject('Network response was not ok');
@@ -142,6 +146,7 @@ export const startCampaign = (audienceId: number): Promise<any[]> => {
                     'Authorization': `Bearer ${localStorage.getItem("token")!}`,
                     'Content-Type': 'application/json',
                 },
+                referrerPolicy: "unsafe-url" ,
                 body: JSON.stringify({}),
             }).then(response => {
                 if (!response.ok) {
@@ -174,7 +179,8 @@ export const getCampaignLogs = (audienceId: number): Promise<CampaignLog[]> => {
                 method: 'GET',
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem("token")!}`
-                }
+                },
+                referrerPolicy: "unsafe-url" 
             }).then(response => {
                 if (!response.ok) {
                   reject('Network response was not ok');
@@ -207,6 +213,7 @@ export const loginWithGoogle = (authorizationCode: string) => {
                 headers: {
                   'Content-Type': 'application/json',
                 },
+                referrerPolicy: "unsafe-url" ,
                 body: JSON.stringify({ token: authorizationCode }),
             })
             .then(response => response.json())
