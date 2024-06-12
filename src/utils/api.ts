@@ -1,4 +1,4 @@
-const API_URL="http://localhost:3000";
+const API_URL="http://34.136.162.10";
 
 export const getAudienceByRules = (rules: any): Promise<any[]> => {
     return new Promise(async(resolve, reject) => {
